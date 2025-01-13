@@ -30,7 +30,7 @@
 
             <span class="mx-3 text-black">Dashboard</span>
         </a>
-        <a class="flex items-center px-6 py-2 mt-4 text-gray-100  bg-opacity-25" href="/">
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-100  bg-opacity-25" href="{{ route('product.index') }}">
             <svg id='Product_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
                 xmlns:xlink='http://www.w3.org/1999/xlink'>
                 <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
