@@ -1,4 +1,4 @@
-@extends('_layouts.master')
+@extends('layouts.master')
 
 @section('body')
     <h3 class="text-gray-700 text-3xl font-semibold">Forms</h3>
@@ -17,7 +17,7 @@
                             </svg>
                         </button>
                     </div>
-                    
+
                     <div class="px-5 py-6 bg-gray-200 text-gray-700 border-b">
                         <label class="text-xs">Name</label>
 
@@ -47,7 +47,7 @@
         <div class="mt-4">
             <div class="p-6 bg-white rounded-md shadow-md">
                 <h2 class="text-lg text-gray-700 font-semibold capitalize">Account settings</h2>
-                
+
                 <form>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                         <div>
