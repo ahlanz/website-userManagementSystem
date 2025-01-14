@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return abort(404);
+        return view('user.edit');
     }
 
     /**

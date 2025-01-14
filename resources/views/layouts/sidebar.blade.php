@@ -60,7 +60,7 @@
             <span class="mx-3">User</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4 text-black" href="{{ route('users.index') }}">
+        <a class="flex items-center px-6 py-2 mt-4 text-black" href="{{ route('setting.index') }}">
             <svg id='Settings_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
                 xmlns:xlink='http://www.w3.org/1999/xlink'>
                 <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -78,7 +78,7 @@
             <span class="mx-3">Setting</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4 text-black" href="{{ route('users.index') }}">
+        <a class="flex items-center px-6 py-2 mt-4 text-black" href="#">
             <svg id='Help_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
                 xmlns:xlink='http://www.w3.org/1999/xlink'>
                 <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -98,10 +98,13 @@
 
 
         <div class="absolute bottom-14 w-full px-6 py-4">
-            <a href="#" class="flex items-center text-black-500 ">
-                <img src="{{ asset('assets/image/logout.png') }}" alt="logout" class="w-6 h-6" />
-                <span class="mx-3">Logout</span>
-            </a>
+            <form method="POST" action="{{ route('logout') }}" x-data>
+                @csrf
+                <button type="submit" class="flex items-center text-black-500">
+                    <img src="{{ asset('assets/image/logout.png') }}" alt="logout" class="w-6 h-6" />
+                    <span class="mx-3">Logout</span>
+                </button>
+            </form>
         </div>
 
     </nav>

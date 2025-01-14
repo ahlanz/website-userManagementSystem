@@ -19,6 +19,8 @@
 
         <script src="{{ asset('js/main.js', 'assets/build') }}"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <!-- Styles -->
+        @livewireStyles
     </head>
     <body>
         <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-poppins">
@@ -34,5 +36,6 @@
                 </main>
             </div>
         </div>
+        @livewireScripts
     </body>
 </html>
