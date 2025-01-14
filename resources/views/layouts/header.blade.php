@@ -27,10 +27,10 @@
     <div class="flex items-center space-x-4">
         <div x-data="{ dropdownOpen: false }" class="relative">
             <div class="flex items-center">
-                <img class="object-cover rounded-full w-12 h-12" src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80" alt="Your avatar">
+                <img class="object-cover rounded-full w-12 h-12" src="{{ url('https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80') }}" alt="Your avatar">
                 <div class="flex flex-col mx-4">
-                    <h3 class="font-sans text-sm">Jhon Doe</h3>
-                    <p class="font-sans text-xs">Jhon@gmail.com</p>
+                    <h3 class="font-sans text-sm">{{ Auth::user()->name }}</h3>
+                    <p class="font-sans text-xs">{{ Auth::user()->email }}</p>
                 </div>
                 <button @click="dropdownOpen = ! dropdownOpen" class="relative block w-6 h-6 mr-3 overflow-hidden rounded-full shadow focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">

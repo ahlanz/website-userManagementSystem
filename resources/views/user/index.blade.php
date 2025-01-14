@@ -4,7 +4,7 @@
 @section('body')
     <div class="flex justify-between mt-10">
         <h3 class="text-gray-700 text-3xl font-medium">User Management</h3>
-        <a href="{{ route('user.edit',1) }}">
+        <a href="{{ route('user.create') }}">
         <button type="button"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2">
             <span class="pr-3"><svg id='Plus_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
@@ -43,6 +43,7 @@
 
                     <tbody class="bg-white">
 
+                        @forelse ($users as $user)
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="flex items-center">
@@ -53,8 +54,8 @@
                                     </div>
 
                                     <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
+                                        <div class="text-sm leading-5 font-medium text-gray-900">{{ $user->name }}</div>
+                                        <div class="text-sm leading-5 text-gray-500">{{ $user->email }}</div>
                                     </div>
                                 </div>
                             </td>
@@ -82,6 +83,13 @@
                                 <a href="#" class="text-red-600 hover:text-red-900">Hapus</a>
                             </td>
                         </tr>
+
+                        @empty
+                        <div class="alert alert-danger">
+                            Data User belum Tersedia.
+                        </div>
+
+                        @endforelse
 
                     </tbody>
                 </table>

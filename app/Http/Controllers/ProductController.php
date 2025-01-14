@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index');
+        $products = Product::latest()->paginate(10);
+
+        return view('product.index',compact('products'));
     }
 
     /**
@@ -19,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -27,8 +30,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate form data
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'nama'   => 'required|min:5',
+            'harga'  => 'required|numeric',
+            'stock'  => 'required|numeric',
+     ]);
+
+        try {
+        // Handle image upload
+        $image = $request->file('gambar');
+        $imageName = $image->hashName();
+        $image->storeAs('public/products', $imageName);
+
+        // Create product
+        Product::create([
+            'gambar' => $imageName,
+            'nama'   => $request->nama,
+            'harga'  => $request->harga,
+            'stock'  => $request->stock,
+        ]);
+
+        
+        return redirect()->route('product.index')->with('success', 'Data Berhasil Disimpan!');
+
+        } catch (\Exception $e) {
+
+        return back()->with('error', 'Terjadi kesalahan, coba lagi!');
+        }
     }
+
 
     /**
      * Display the specified resource.

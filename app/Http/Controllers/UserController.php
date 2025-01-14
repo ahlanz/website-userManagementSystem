@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $users = User::latest()->paginate(10);
+
+        return view('user.index',compact('users'));
     }
 
     /**
@@ -19,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return abort(404);
+        return view('user.create');
     }
 
     /**
@@ -27,7 +31,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return abort(404);
+         //validate form
+         $request->validate([
+            'profile_photo_path'         => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'name'         => 'required|min:5',
+            'title'         => 'required|min:5',
+            'email'   => 'required|min:5',
+            'role'          => 'required|in:admin,user',
+            'status'        => 'required|in:active,inactive',
+            'password'      => 'required|min:8|confirmed',
+        ]);
+
+        $image = $request->file('image');
+        $image->storeAs('public/user', $image->hashName());
+
+         //create user
+         User::create([
+            'profile_photo_path'         => $image->hashName(),
+            'title'         => $request->title,
+            'name'   => $request->name,
+            'email'         => $request->email,
+            'role'     => $request->role,
+            'status'   => $request->status,
+            'password' => Hash::make($request->password),
+        ]);
+
+
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
 
     /**
@@ -59,6 +89,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        return abort(404);
+
+        $users = User::findOrFail($id);
+        $users->delete();
+        
+        return redirect()->route('user.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

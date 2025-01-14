@@ -8,7 +8,7 @@
         <div class="p-6 bg-white rounded-md shadow-md">
             <h2 class="text-lg text-gray-700 font-semibold capitalize">Form Tambah Produk</h2>
 
-            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                     <div>

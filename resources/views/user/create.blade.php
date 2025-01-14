@@ -11,7 +11,6 @@
             <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Input untuk upload gambar di bagian atas -->
                 <div class="mt-2">
                     <label class="text-gray-700" for="profile_image">Upload Gambar</label>
                     <input name="profile_image" id="profile_image"

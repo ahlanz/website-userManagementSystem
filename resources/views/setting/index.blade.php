@@ -15,7 +15,7 @@
                     <div class="sm:col-span-1 flex flex-col items-start">
                         <label class="text-gray-700" for="profile_image">Upload Foto Profil</label>
                         <input name="profile_image" id="profile_image"
-                            class="form-input w-full mt-4 rounded-md focus:border-indigo-600" type="file">
+                            class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="file">
                         <small class="text-gray-500 mt-2">Format gambar: JPG, PNG. Maksimal 2MB.</small>
                     </div>
 
